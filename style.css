@@ -1,0 +1,952 @@
+
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 80px; /* Ajout d'un espacement en bas pour que le contenu ne soit pas caché par le footer */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100%; /* S'assure que le corps prend toujours toute la hauteur de la fenêtre */
+    display: flex;
+    flex-direction: column;
+	text-align:center;
+	
+}
+.titre_page{
+	
+	text-align:center;
+	
+}
+a {
+	font-size: 14px;
+    text-decoration: none;
+    color: black;
+}
+
+/* Header Styles */
+header {
+    background-color: #235789;
+    padding: 10px 20px;
+}
+
+/* Style spécifique à la page d'accueil */
+body.home .accueil-projets {
+  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 150px;
+    margin: 0 auto;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+body.home .accueil-projets .projet-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+body.home .accueil-projets .projet-card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+body.home .accueil-projets .projet-card div {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Responsive : ajuster à 1 colonne sur petits écrans */
+@media (max-width: 768px) {
+    body.home .accueil-projets {
+        grid-template-columns: 1fr; /* 1 seule colonne sur les petits écrans */
+    }
+
+    /* Ajouter un espace sous la grille de projets */
+    .home .accueil-projets {
+        margin-bottom: 20% !important; /* Augmente l'espace sous la grille de projets */
+    }
+
+    /* Grille de projets en une seule colonne sur petits écrans */
+    .projects-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+    }
+}
+
+/* Navbar Styles */
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Sépare le logo et le menu */
+    align-items: center;
+    padding: 10px 20px; /* Espacement intérieur */
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-list {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-list li {
+    display: inline-block;
+}
+
+.menu-list a {
+    color: #F1D302;
+	font-weight: bold;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.menu-list a:hover {
+    color: #fff;
+    background-color: #0073aa;
+    border-radius: 4px;
+}
+
+/* Ajout du menu burger */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #0073aa;
+}
+
+
+
+/* Responsiveness: affichage du menu burger en dessous de 768px */
+@media screen and (max-width: 768px) {
+    /* Cacher le menu par défaut sur les petits écrans */
+    .menu-container {
+        display: none;
+    }
+    .logo-image {
+        width: 40px; /* Encore plus petit sur les très petits écrans */
+    }
+
+    /* Afficher le menu burger */
+    .menu-toggle {
+        display: flex;
+        z-index: 1100;
+    }
+
+    /* Fond semi-transparent en arrière-plan lorsque le menu est activé */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Fond sombre transparent */
+        z-index: 999;
+    }
+
+    /* Lorsque le menu est actif, afficher l'overlay */
+    .menu-overlay.active {
+        display: block;
+    }
+
+    /* Menu centré avec fond sombre */
+    .menu-container.active {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        z-index: 1000;
+    }
+
+    /* Liste d'items du menu */
+    .menu-list {
+        display: block;
+        text-align: center;
+    }
+
+    .menu-list li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .menu-list a {
+        display: block;
+        padding: 15px 20px;
+        color: #fff;
+        font-size: 18px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .menu-list a:hover {
+        background-color: #0073aa;
+    }
+
+    .menu-toggle .bar {
+        background-color: #ffffff;
+    }
+}
+/* Responsive : Petits écrans */
+@media screen and (max-width: 768px) {
+    .logo img {
+        width: 60px; /* Réduction de la taille du logo */
+    }
+
+    /* Menu principal caché */
+    .menu-container {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #1d4f7b;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .menu-list {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    /* Affichage du bouton burger */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Menu actif */
+    .menu-container.active {
+        display: flex;
+    }
+
+    .menu-overlay.active {
+        display: block;
+    }
+}
+
+/* Footer Styles (inchangé) */
+footer {
+	margin-top: 20px;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    margin-top: auto;
+    width: 100%;
+    z-index: 1000;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-container > div {
+    padding: 0 20px;
+    display: flex;
+    justify-content: center; /* Centre les éléments horizontalement */
+    align-items: center; /* Centre les éléments verticalement */
+}
+
+.footer-container > div:not(:last-child) {
+    border-right: 3px solid #007bff;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.textefooter {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Pages */
+.footer-pages ul {
+    list-style: none;
+    padding: 0;
+    text-align: center; /* Centre le texte des liens */
+}
+
+.footer-pages li {
+    margin: 5px 0;
+}
+
+.footer-pages a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-pages a:hover {
+    color: #ccc;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.social-links a:hover {
+    color: #ccc;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .social-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    justify-items: center;
+}
+
+.project-item {
+	width:50%;
+    background-color: #c4c2c2;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-item h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Project Detail */
+.project-detail-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.left-column {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.project-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.project-courses {
+    font-size: 14px;
+}
+
+.project-courses ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-courses li {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.right-column {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .project-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Form styles */
+form {
+    display: grid;
+    gap: 15px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 5%;
+    padding: 5px 5px;
+    background-color: #0073aa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #005f8a;
+}
+/* Styles pour centrer le formulaire */
+.form-tri-cours {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.form-tri-label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-tri-select {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-tri-select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+    .form-tri-cours {
+        min-height: 30vh; /* Ajustement pour les écrans mobiles */
+    }
+
+    .form-tri-select {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+/* Style général de la pagination */
+.pagination {
+    display: flex;
+    justify-content: center; /* Centrer les éléments */
+    align-items: center;
+    margin-top: 10%; /* Espacement au-dessus de la pagination */
+    padding: 10px 0;
+}
+
+.pagination a,
+.pagination span {
+    padding: 10px 20px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination .current {
+    font-weight: bold;
+    color: #0073aa; 
+}
+
+-- cest le footer --
+
+.footer-widget ul {
+    list-style: none; /* Supprime les puces */
+    margin: 0;        /* Enlève la marge par défaut */
+    padding: 0;       /* Enlève le padding par défaut */
+}
+
+.footer-widget li {
+    list-style: none; /* Assure que chaque li n'a pas de puce */
+    margin: 0;        /* Supprime les marges */
+    padding: 0;       /* Supprime le padding */
+}
+
+/* Conteneur principal du footer */
+footer {
+	margin-top:20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Étire les enfants pour une même hauteur */
+    padding: 20px 0;
+    background-color: #000;
+    color: #fff;
+}
+
+.footer-widget {
+    flex: 1; /* Égalise la largeur */
+    text-align: center;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column; /* Alignement vertical du contenu */
+    justify-content: center; /* Centre le contenu verticalement */
+}
+
+.footer-widget:not(:last-child) {
+    border-radius: 10%;
+    border-right: 10px solid #003366;
+}
+
+
+/* Styles pour les images et logos */
+.footer-widget img {
+    max-width: 100px; /* Taille des logos ou icônes */
+    margin-bottom: 10px;
+}
+
+.footer-widget ul {
+    list-style: none; /* Retire les puces */
+    margin: 0;
+    padding: 0;
+}
+
+.footer-widget ul li {
+    margin: 10px 0; /* Espacement vertical entre les liens */
+}
+
+.footer-widget ul li a {
+    color: yellow; /* Couleur des liens */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-widget ul li a:hover {
+    color: #ffcc00; /* Couleur au survol */
+}
+
+/* Centrage du message */
+.hello-message {
+    display: flex; /* Active Flexbox */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    height: 10vh; /* Hauteur totale de la fenêtre */
+    font-size: 24px; /* Taille du texte */
+    font-weight: bold; /* Texte en gras */
+    text-align: center; /* Texte centré */
+}
+
+/* Style du conteneur principal */
+#main-content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+/* Pagination */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    color: #003366;
+    text-decoration: none;
+    border: 1px solid #003366;
+    border-radius: 3px;
+}
+
+.pagination a:hover {
+    background-color: #003366;
+    color: #fff;
+}
+
+.pagination .current {
+    background-color: #003366;
+    color: #fff;
+    border: none;
+}
+
+/* Liste des résultats */
+.search-results-grid {
+    display: flex; /* Utiliser Flexbox pour aligner les éléments */
+    flex-wrap: wrap; /* Permet d'aller à la ligne si nécessaire */
+    gap: 20px; /* Espacement entre les projets */
+    justify-content: center; /* Centrer les projets horizontalement */
+    margin-top: 20px;
+}
+
+.search-results-grid .project-item {
+    flex: 0 1 calc(33.333% - 20px); /* Largeur de chaque projet (1/3) avec marge */
+    box-sizing: border-box; /* Inclure les bordures et marges dans la largeur */
+    max-width: 300px; /* Limiter la largeur maximale */
+    text-align: center; /* Centrer le contenu à l'intérieur */
+}
+
+
+.search-excerpt {
+    font-size: 14px;
+    color: #666;
+}
+/* Conteneur du formulaire de recherche */
+.searchform form {
+    display: flex
+;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    flex-direction: column-reverse;
+}
+
+/* Champ de recherche */
+.searchform .search-input {
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-right: none; /* Enlève la bordure droite */
+    border-radius: 0px 0px 4px 4px;
+    box-sizing: border-box; /* Inclut le padding dans la largeur */
+    height: 100%; /* S'assure que l'input remplit le conteneur */
+}
+
+/* Bouton de recherche */
+.searchform .search-button {
+    background-color: #f1d302;
+    color: #fff;
+    border: 1px solid #ffffff;; /* Bordure pour alignement parfait */
+    border-radius: 4px 4px 0px 0px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    height: 100%; /* Étire le bouton pour correspondre à l'input */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center; /* Centre l'icône verticalement */
+    justify-content: center;
+}
+
+.searchform .search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Taille par défaut du logo */
+.logo-image {
+    width: 100px;
+    height: auto;
+    transition: width 0.3s ease; /* Animation douce */
+}
+
+/* Responsive : Réduction de la taille du logo sur petits écrans */
+@media screen and (max-width: 768px) {
+    .logo-image {
+        display:none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo-image {
+        display:none;
+    }
+}
+.project-link.button {
+    margin-top: 5%;
+    padding: 5px 5px;
+    background-color: #0073aa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.project-link.button:hover {
+    background-color: #005f8a; /* Couleur au survol */
+}
+
+/* Style général pour le loader */
+.loader {
+    text-align: center;
+}
+
+.loader .spinner {
+    border: 4px solid #f3f3f3; /* Gris clair */
+    border-top: 4px solid #003366; /* Bleu */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Students Grid */
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    justify-items: center;
+}
+
+.student-item {
+    width: 50%;
+    background-color: #c4c2c2;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-item h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+@media (max-width: 1024px) {
+    .students-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .students-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Student Detail */
+.student-detail-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.student-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.left-column {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-card h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.student-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.student-courses {
+    font-size: 14px;
+}
+
+.student-courses ul {
+    list-style: none;
+    padding: 0;
+}
+
+.student-courses li {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.right-column {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .student-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Full Page Centering */
+.full-page-center {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center;     /* Centrer verticalement */
+    height: 100vh;           /* Prendre toute la hauteur de la fenêtre */
+    margin: 0;               /* Supprimer les marges par défaut */
+}
+
+/* Students Grid */
+.students-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.student-card {
+    width: 250px;
+    background-color: #c4c2c2;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.student-card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.student-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.student-card a {
+    text-decoration: none;
+    color: #0073aa;
+    font-weight: bold;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+@media (max-width: 1024px) {
+    .students-grid {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .students-grid {
+        justify-content: center;
+    }
+    .student-card {
+        width: 100%;
+    }
+}
